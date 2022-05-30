@@ -14,8 +14,8 @@ public class TesterHbmRepository extends HbmRepository<Tester, Integer> {
     @Override
     public Tester findById(Integer id) {
         Tester tester = null;
-        initialize();
-        try(Session session = sessionFactory.openSession()){
+        OrmUtils.initialize();
+        try(Session session = OrmUtils.sessionFactory.openSession()){
             Transaction tx = null;
             try {
                 tx = session.beginTransaction();
@@ -29,7 +29,7 @@ public class TesterHbmRepository extends HbmRepository<Tester, Integer> {
             }
         }
         finally {
-            close();
+            OrmUtils.close();
         }
         return tester;
     }
@@ -37,8 +37,8 @@ public class TesterHbmRepository extends HbmRepository<Tester, Integer> {
     public Tester findByUsername(String username)
     {
         Tester tester = null;
-        initialize();
-        try(Session session = sessionFactory.openSession()){
+        OrmUtils.initialize();
+        try(Session session = OrmUtils.sessionFactory.openSession()){
             Transaction tx = null;
             try {
                 tx = session.beginTransaction();
@@ -55,7 +55,7 @@ public class TesterHbmRepository extends HbmRepository<Tester, Integer> {
             }
         }
         finally {
-            close();
+            OrmUtils.close();
         }
         return tester;
     }
@@ -63,8 +63,8 @@ public class TesterHbmRepository extends HbmRepository<Tester, Integer> {
     @Override
     public Collection<Tester> getAll() {
         List<Tester> testers = null;
-        initialize();
-        try(Session session = sessionFactory.openSession()){
+        OrmUtils.initialize();
+        try(Session session = OrmUtils.sessionFactory.openSession()){
             Transaction tx = null;
             try {
                 tx = session.beginTransaction();
@@ -77,7 +77,7 @@ public class TesterHbmRepository extends HbmRepository<Tester, Integer> {
             }
         }
         finally {
-            close();
+            OrmUtils.close();
         }
         return testers;
     }

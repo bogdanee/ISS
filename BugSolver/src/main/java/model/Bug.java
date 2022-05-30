@@ -5,12 +5,12 @@ import model.utils.BugStatus;
 public class Bug extends Entity<Integer> {
     private String name;
     private String description;
-    private BugStatus status;
+    private String status;
     private String fileAddress;
 
     public Bug(){}
 
-    public Bug(String name, String description, BugStatus status, String fileAddress) {
+    public Bug(String name, String description, String status, String fileAddress) {
         this.name = name;
         this.description = description;
         this.status = status;
@@ -33,11 +33,11 @@ public class Bug extends Entity<Integer> {
         this.description = description;
     }
 
-    public BugStatus getStatus() {
+    public String getStatus() {
         return status;
     }
 
-    public void setStatus(BugStatus status) {
+    public void setStatus(String status) {
         this.status = status;
     }
 

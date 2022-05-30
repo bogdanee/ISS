@@ -8,7 +8,7 @@
 
         <property name="dialect">repository.dialect.SQLiteDialect</property>
         <property name="connection.driver_class">org.sqlite.JDBC</property>
-        <property name="connection.url">jdbc:sqlite:C:/Bogdan/UBB/ISS/BugSolver/database/bugs.db</property>
+        <property name="connection.url">jdbc:sqlite:C:/Bogdan/UBB/ISS/Proiect/BugSolver/database/bugs.db</property>
 
 
         <!-- Echo all executed SQL to stdout -->

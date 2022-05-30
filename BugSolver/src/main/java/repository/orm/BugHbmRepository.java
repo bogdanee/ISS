@@ -13,8 +13,8 @@ public class BugHbmRepository extends HbmRepository<Bug, Integer> {
     @Override
     public Bug findById(Integer id) {
         Bug bug = null;
-        initialize();
-        try(Session session = sessionFactory.openSession()){
+        OrmUtils.initialize();
+        try(Session session = OrmUtils.sessionFactory.openSession()){
             Transaction tx = null;
             try {
                 tx = session.beginTransaction();
@@ -28,7 +28,7 @@ public class BugHbmRepository extends HbmRepository<Bug, Integer> {
             }
         }
         finally {
-            close();
+            OrmUtils.close();
         }
         return bug;
     }
@@ -36,8 +36,8 @@ public class BugHbmRepository extends HbmRepository<Bug, Integer> {
     @Override
     public Collection<Bug> getAll() {
         List<Bug> bugs = null;
-        initialize();
-        try(Session session = sessionFactory.openSession()){
+        OrmUtils.initialize();
+        try(Session session = OrmUtils.sessionFactory.openSession()){
             Transaction tx = null;
             try {
                 tx = session.beginTransaction();
@@ -50,7 +50,7 @@ public class BugHbmRepository extends HbmRepository<Bug, Integer> {
             }
         }
         finally {
-            close();
+            OrmUtils.close();
         }
         return bugs;
     }

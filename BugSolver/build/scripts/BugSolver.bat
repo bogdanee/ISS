@@ -71,7 +71,7 @@ set CLASSPATH=%APP_HOME%\lib\BugSolver-1.0-SNAPSHOT.jar;%APP_HOME%\lib\javafx-fx
 
 
 @rem Execute BugSolver
-"%JAVA_EXE%" %DEFAULT_JVM_OPTS% %JAVA_OPTS% %BUG_SOLVER_OPTS%  -classpath "%CLASSPATH%" window.Main %*
+"%JAVA_EXE%" %DEFAULT_JVM_OPTS% %JAVA_OPTS% %BUG_SOLVER_OPTS%  -classpath "%CLASSPATH%" Main %*
 
 :end
 @rem End local scope for the variables with windows NT shell

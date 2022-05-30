@@ -13,8 +13,8 @@ public class ProgrammerHbmRepository extends HbmRepository<Programmer, Integer>{
     @Override
     public Programmer findById(Integer id) {
         Programmer programmer = null;
-        initialize();
-        try(Session session = sessionFactory.openSession()){
+        OrmUtils.initialize();
+        try(Session session = OrmUtils.sessionFactory.openSession()){
             Transaction tx = null;
             try {
                 tx = session.beginTransaction();
@@ -28,15 +28,15 @@ public class ProgrammerHbmRepository extends HbmRepository<Programmer, Integer>{
             }
         }
         finally {
-            close();
+            OrmUtils.close();
         }
         return programmer;
     }
 
     public Programmer findByUsername(String username) {
         Programmer programmer = null;
-        initialize();
-        try(Session session = sessionFactory.openSession()){
+        OrmUtils.initialize();
+        try(Session session = OrmUtils.sessionFactory.openSession()){
             Transaction tx = null;
             try {
                 tx = session.beginTransaction();
@@ -53,7 +53,7 @@ public class ProgrammerHbmRepository extends HbmRepository<Programmer, Integer>{
             }
         }
         finally {
-            close();
+            OrmUtils.close();
         }
         return programmer;
     }
@@ -61,8 +61,8 @@ public class ProgrammerHbmRepository extends HbmRepository<Programmer, Integer>{
     @Override
     public Collection<Programmer> getAll() {
         List<Programmer> programmers = null;
-        initialize();
-        try(Session session = sessionFactory.openSession()){
+        OrmUtils.initialize();
+        try(Session session = OrmUtils.sessionFactory.openSession()){
             Transaction tx = null;
             try {
                 tx = session.beginTransaction();
@@ -75,7 +75,7 @@ public class ProgrammerHbmRepository extends HbmRepository<Programmer, Integer>{
             }
         }
         finally {
-            close();
+            OrmUtils.close();
         }
         return programmers;
     }

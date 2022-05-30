@@ -13,8 +13,6 @@ import model.Programmer;
 import model.Tester;
 import service.Service;
 import javafx.event.ActionEvent;
-
-import java.io.IOException;
 import java.util.Objects;
 
 public class LoginController {
@@ -50,8 +48,12 @@ public class LoginController {
                 FXMLLoader testerView = new FXMLLoader(getClass().getClassLoader().getResource("fxml/testerView.fxml"));
                 Parent root = testerView.load();
 
+                TesterController testerController = testerView.getController();
+                testerController.setService(service);
+                testerController.showBugs();
+
                 Stage stage = new Stage();
-                stage.setTitle("Application");
+                stage.setTitle("Tester");
                 stage.setScene(new Scene(root));
                 stage.show();
                 ((Node)(actionEvent.getSource())).getScene().getWindow().hide();
@@ -65,8 +67,12 @@ public class LoginController {
                 FXMLLoader programmerView = new FXMLLoader(getClass().getClassLoader().getResource("fxml/programmerView.fxml"));
                 Parent root = programmerView.load();
 
+                ProgrammerController programmerController = programmerView.getController();
+                programmerController.setService(service);
+                programmerController.showBugs();
+
                 Stage stage = new Stage();
-                stage.setTitle("Application");
+                stage.setTitle("Programmer");
                 stage.setScene(new Scene(root));
                 stage.show();
                 ((Node)(actionEvent.getSource())).getScene().getWindow().hide();

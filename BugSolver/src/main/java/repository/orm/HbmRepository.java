@@ -16,8 +16,8 @@ public abstract class HbmRepository<E extends Entity<ID>, ID> implements Reposit
 
     @Override
     public void add(E elem) throws Exception {
-        initialize();
-        try(Session session = sessionFactory.openSession()){
+        OrmUtils.initialize();
+        try(Session session = OrmUtils.sessionFactory.openSession()){
             Transaction tx = null;
             try {
                 tx = session.beginTransaction();
@@ -30,14 +30,14 @@ public abstract class HbmRepository<E extends Entity<ID>, ID> implements Reposit
             }
         }
         finally {
-            close();
+            OrmUtils.close();
         }
     }
 
     @Override
     public void delete(E elem) {
-        initialize();
-        try(Session session = sessionFactory.openSession()){
+        OrmUtils.initialize();
+        try(Session session = OrmUtils.sessionFactory.openSession()){
             Transaction tx = null;
             try {
                 tx = session.beginTransaction();
@@ -50,14 +50,14 @@ public abstract class HbmRepository<E extends Entity<ID>, ID> implements Reposit
             }
         }
         finally {
-            close();
+            OrmUtils.close();
         }
     }
 
     @Override
     public void update(E elem, ID id) {
-        initialize();
-        try(Session session = sessionFactory.openSession()){
+        OrmUtils.initialize();
+        try(Session session = OrmUtils.sessionFactory.openSession()){
             Transaction tx = null;
             try {
                 tx = session.beginTransaction();
@@ -70,7 +70,7 @@ public abstract class HbmRepository<E extends Entity<ID>, ID> implements Reposit
             }
         }
         finally {
-            close();
+            OrmUtils.close();
         }
     }
 
@@ -79,28 +79,6 @@ public abstract class HbmRepository<E extends Entity<ID>, ID> implements Reposit
 
     @Override
     public abstract Collection<E> getAll();
-
-    static SessionFactory sessionFactory;
-    static void initialize() {
-        // A SessionFactory is set up once for an application!
-        final StandardServiceRegistry registry = new StandardServiceRegistryBuilder()
-                .configure() // configures settings from hibernate.cfg.xml
-                .build();
-        try {
-            sessionFactory = new MetadataSources( registry ).buildMetadata().buildSessionFactory();
-        }
-        catch (Exception e) {
-            System.err.println("Exception "+e);
-            StandardServiceRegistryBuilder.destroy( registry );
-        }
-    }
-
-    static void close(){
-        if ( sessionFactory != null ) {
-            sessionFactory.close();
-        }
-
-    }
 
 
 

@@ -201,7 +201,7 @@ fi
 
 set -- \
         -classpath "$CLASSPATH" \
-        window.Main \
+        Main \
         "$@"
 
 # Use "xargs" to parse quoted args.

@@ -1,16 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-
 <AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ProgrammerController">
    <children>
-      <Label layoutX="54.0" layoutY="48.0" text="Programmer window">
+      <Label layoutX="25.0" layoutY="23.0" text="List of bugs">
          <font>
             <Font size="18.0" />
          </font>
       </Label>
+      <TableView fx:id="tableViewBugs" layoutX="25.0" layoutY="51.0" prefHeight="292.0" prefWidth="550.0">
+        <columns>
+          <TableColumn prefWidth="75.0" text="C1" />
+          <TableColumn prefWidth="75.0" text="C2" />
+        </columns>
+      </TableView>
+      <Button fx:id="buttonSolved" layoutX="25.0" layoutY="348.0" mnemonicParsing="false" onAction="#handleBugSolved" text="Bug solved" />
+      <Button fx:id="buttonLogout" layoutX="523.0" layoutY="348.0" mnemonicParsing="false" onAction="#handleLogout" text="Logout" />
+      <Button fx:id="buttonDelete" layoutX="117.0" layoutY="348.0" mnemonicParsing="false" onAction="#handleDelete" text="Delete" />
    </children>
 </AnchorPane>

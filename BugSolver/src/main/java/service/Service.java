@@ -1,10 +1,13 @@
 package service;
 
+import model.Bug;
 import model.Programmer;
 import model.Tester;
 import repository.orm.BugHbmRepository;
 import repository.orm.ProgrammerHbmRepository;
 import repository.orm.TesterHbmRepository;
+
+import java.util.List;
 
 public class Service {
     private BugHbmRepository bugRepository;
@@ -25,6 +28,24 @@ public class Service {
     public Programmer findProgrammerByUsername(String username)
     {
         return programmerRepository.findByUsername(username);
+    }
+
+    public void addBug(Bug bug) throws Exception {
+        if (bug.getName().isEmpty() || bug.getDescription().isEmpty() || bug.getFileAddress().isEmpty())
+            throw new Exception("Invalid arguments!");
+        bugRepository.add(bug);
+    }
+
+    public void deleteBug(Bug bug){
+        bugRepository.delete(bug);
+    }
+
+    public void updateBug(Bug bug){
+        bugRepository.update(bug, bug.getId());
+    }
+
+    public List<Bug> getAllBugs(){
+        return (List<Bug>) bugRepository.getAll();
     }
 
 }
